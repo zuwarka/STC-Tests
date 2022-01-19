@@ -62,7 +62,7 @@ void my_rand_lcg()
 			numbers[i] = numbers[i - 1]; //выталкиваем числа вперед
 		}
 
-		std::cout << diapason_from + seed % diapason_to << std::endl;
+		std::cout << seed % (diapason_to - diapason_from + 1) + diapason_from << std::endl;
 		flag--;
 	} while (flag != 0);
 }
