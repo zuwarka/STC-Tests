@@ -7,7 +7,7 @@ unsigned short const N = 4; //количество старотовых чисе
 void my_rand_lcg()
 {
 	//пользователю предлагается ввести старотовую последовательность для вычисления псевдослучайного ряда чисел
-	unsigned short numbers[N], seed = 0, flag = 0; //старотовый массив, сид, флаг (кол-во чисел)
+	unsigned short numbers[N], seed = 0, flag = 0, diapason_from = 0, diapason_to = 0; //старотовый массив, сид, флаг (кол-во чисел)
 	unsigned short a = 0, c = 0, m = 0; //коэффициенты ЛКМ
 	std::cout << "Input four integer numbers (16bit) to form a row for randomize: " << std::endl;
 	//заносим в массив numbers старотовые четыре числа с клавиатуры
@@ -26,6 +26,12 @@ void my_rand_lcg()
 	std::cin >> flag;
 	std::cout << std::endl;
 	//флаг - это количество выводимых псевдослучайных чисел (вводится с клавиатуры)
+	//здесь пользователь вводит диапазон выводимых псевдослучайны чисел
+	std::cout << "Input value of diapason of numbers from: ";
+	std::cin >> diapason_from;
+	std::cout << " to: ";
+	std::cin >> diapason_to;
+	std::cout << std::endl;
 	//цикл с постусловием
 	//когда флаг станет нулевы, подсчет чисел и вывод завершится
 
@@ -56,7 +62,7 @@ void my_rand_lcg()
 			numbers[i] = numbers[i - 1]; //выталкиваем числа вперед
 		}
 
-		std::cout << seed << std::endl;
+		std::cout << diapason_from + seed % diapason_to << std::endl;
 		flag--;
 	} while (flag != 0);
 }
